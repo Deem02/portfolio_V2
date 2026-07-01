@@ -1,151 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Deem | Portfolio </title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Epunda+Sans:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deem | Portfolio</title>
+  <meta name="description" content="Deem Alqasir - Software Engineer portfolio. Full-stack developer specializing in React, TypeScript, Django and Python." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epunda+Sans:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="./scripts/app.js" defer></script>
-    <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/style.css">
 </head>
-
 <body>
-    <!-- https://youtu.be/Og-YEeCTE7A?si=Oeatz5G8KOPQ_fwD -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="#hero" class="navbar-logo"> <img src="./images/Deem's logo.png" alt="Deem Logo"> </a>
-            <!-- hamburger menu button that appears on smaller screens -->
-            <button class="navbar-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <!-- ul.navbar-menu>li*5>a -->
-            <ul class="navbar-menu">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <!-- <li><a href="#skills">Skills</a></li> -->
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li> <a href="https://www.linkedin.com/in/deem-alqasir-967b38290/?originalSubdomain=sa" target="_blank"
-                        class="navbar-icon"><i class="fa-brands fa-linkedin"></i></a></li>
-            </ul>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar" id="scrollProgress"></div></div>
+
+  <header class="navbar" id="navbar">
+    <nav class="navbar-container" aria-label="Primary">
+      <a href="#hero" class="navbar-logo" aria-label="Deem Alqasir home">
+        <img src="./images/Deem's logo.png" alt="Deem Alqasir logo">
+        <!-- <span class="navbar-logo-text">Deem Alqasir</span> -->
+      </a>
+
+      <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbarMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode">
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <a href="https://github.com/Deem02" target="_blank" rel="noopener noreferrer" class="navbar-icon" aria-label="GitHub profile"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/deem-alqasir-967b38290/" target="_blank" rel="noopener noreferrer" class="navbar-icon" aria-label="LinkedIn profile"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
     </nav>
+  </header>
 
-    <section id="hero">
-        <div class="hero-container">
-            <h1 class="hero-title">Hello </h1>
-            <span class="emoji">👋🏻</span>
+  <main id="main">
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="hero-inner">
+        <div class="hero-text" data-animate="fade-up">
+          <p class="hero-greeting">Hello <span class="emoji" aria-hidden="true">👋🏻</span></p>
+          <h1 class="hero-title">I'm <span class="text-gradient">Deem</span>,<br>Software Engineer</h1>
+          <p class="hero-subtitle">I build modern, scalable, and user-friendly web applications that solve real-world problems.</p>
+
+          <ul class="tech-badges" aria-label="Core technologies">
+            <li class="badge"><i class="fa-brands fa-react"></i> React</li>
+            <li class="badge"><i class="fa-solid fa-code"></i> TypeScript</li>
+            <li class="badge"><i class="fa-brands fa-python"></i> Django</li>
+            <li class="badge"><i class="fa-brands fa-python"></i> Python</li>
+            <li class="badge"><i class="fa-solid fa-database"></i> PostgreSQL</li>
+          </ul>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View Projects <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <div class="hero-social">
+            <a href="https://github.com/Deem02" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/deem-alqasir-967b38290/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
         </div>
-        <p id="intro-text">
-            I'm <span id="name-">Deem</span>, a tech enthusiast passionate about developing
-            innovative applications and solutions. <br>
-            Check out my Portfolio and let's connect!
-        </p>
+
+      </div>
+      <a href="#about" class="scroll-hint" aria-label="Scroll to About section"><i class="fa-solid fa-chevron-down"></i></a>
     </section>
 
-    <!-- (introduce yourself, your goals, and background). -->
+    <!-- ABOUT -->
     <section id="about" class="page-section">
-        <h5>About Me</h5>
-        <div class="about-text-box">
-            <p>My name is <span id="name-">Deem Alqasir</span>, a recent Information Technology graduate from Qassim
-                University
-                with First Class Honors. During my studies, I worked on a variety of projects using different
-                tools and technologies, which built a strong foundation for my career.
-                I am eager to contribute my skills to innovative tech projects while continuing to grow and learn 🌟🚀.
+      <div class="section-heading" data-animate="fade-up">
+        <span class="section-tag"><i class="fa-regular fa-user"></i> About Me</span>
+      </div>
+
+      <div class="about-grid" data-animate="fade-up" data-delay="100">
+        <div class="about-image">
+          <img src="./images/Deem's logo.png" alt="Deem Alqasir working" loading="lazy">
+        </div>
+
+        <div class="about-content">
+          <p class="about-text">
+            My name is <strong>Deem Alqasir</strong>, a recent Information Technology graduate from Qassim University
+            with First Class Honors. I'm passionate about building exceptional digital experiences and solving
+            meaningful problems through clean code and thoughtful design.
+          </p>
+
+          <div class="about-cards">
+            <div class="info-card">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <div>
+                <h3>Education</h3>
+                <p>BSc in Information Technology<br>Qassim University, First Class Honors</p>
+              </div>
+            </div>
+            <div class="info-card">
+              <i class="fa-solid fa-rocket"></i>
+              <div>
+                <h3>Bootcamp</h3>
+                <p>Software Engineering Intensive<br>Full Stack Development</p>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="quick-facts-title"><i class="fa-solid fa-bolt"></i> Quick Facts</h4>
+          <div class="quick-facts">
+            <div class="fact"><span class="fact-value">2025</span><span class="fact-label">Graduation Year</span></div>
+            <div class="fact"><span class="fact-value">4.83/ 5</span><span class="fact-label">GPA</span></div>
+            <div class="fact"><span class="fact-value">First Class</span><span class="fact-label">Honors</span></div>
+            <div class="fact"><span class="fact-value">Saudi Arabia</span><span class="fact-label">Based in</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="page-section projects-section">
+      <div class="section-heading" data-animate="fade-up">
+        <span class="section-tag"><i class="fa-solid fa-star"></i> Featured Projects</span>
+        <h2 class="section-title">Things I've Built</h2>
+      </div>
+
+      <div class="projects-box">
+
+        <!-- Project 1: Sada Al-Tamr Solo -->
+        <article class="project-card project-card--featured" data-animate="fade-up">
+          <span class="ribbon ribbon--featured"><i class="fa-solid fa-star"></i> Featured Project</span>
+          <div class="project-image">
+            <img src="./images/logo-sada (2).png" alt="Sada Al-Tamr auction platform dashboard screenshot" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-heading">
+              <h3>Sada Al-Tamr</h3>
+              <span class="project-subtitle">AgentX Hackathon · Solo Development</span>
+            </div>
+
+            <ul class="tech-badges tech-badges--sm">
+              <li class="badge"><i class="fa-brands fa-react"></i> React</li>
+              <li class="badge">TypeScript</li>
+              <li class="badge">Vite</li>
+              <li class="badge">Tailwind CSS</li>
+              <li class="badge">REST APIs</li>
+              <li class="badge"><i class="fa-solid fa-database"></i> PostgreSQL</li>
+            </ul>
+
+            <p class="project-desc">
+              AI-powered smart auction platform replacing manual paper workflows with an intelligent
+              real-time auction system, built solo end-to-end during the AgentX Hackathon.
             </p>
-        </div>
+
+            <ul class="project-highlights">
+              <li>Built the frontend architecture and reusable React components from scratch</li>
+              <li>Designed responsive layouts and modern real-time dashboards</li>
+              <li>Integrated REST APIs with authentication flows</li>
+              <li>Added dark/light mode and an offline-first workflow</li>
+              <li>Optimized performance and used Git throughout development</li>
+            </ul>
+
+            <div class="project-actions">
+              <a href="https://github.com/Deem02/sada-al-tamr" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+              <a href="https://sada-lemon-chi.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm btn-live">
+                Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Sada Al-Tamr Team Website -->
+        <article class="project-card project-card--team" data-animate="fade-up" data-delay="100">
+          <span class="ribbon ribbon--team"><i class="fa-solid fa-users"></i> Team Project</span>
+          <div class="project-image">
+            <img src="./images/logo-sada (2).png" alt="Sada Al-Tamr team website screenshot" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-heading">
+              <h3>Sada Al-Tamr — Team Website</h3>
+              <span class="project-subtitle">AgentX Hackathon · Team Presentation Site</span>
+            </div>
+
+            <ul class="tech-badges tech-badges--sm">
+              <li class="badge"><i class="fa-brands fa-react"></i> React</li>
+              <li class="badge">TypeScript</li>
+              <li class="badge">Vite</li>
+              <li class="badge">Tailwind CSS</li>
+            </ul>
+
+            <p class="project-desc">
+              After completing my solo MVP, I collaborated with my team to build the official
+              project website used during the hackathon presentation.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Developed the website and the QR code page for judges and team members</li>
+              <li>Improved UI/UX and integrated all project information</li>
+              <li>Optimized responsiveness and prepared presentation-ready pages</li>
+            </ul>
+
+            <div class="project-actions">
+              <a href="https://github.com/Deem02/sada-al-tamr-website" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+              <a href="https://sada-altamr.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm btn-live">
+                Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Employee Management System -->
+        <article class="project-card" data-animate="fade-up" data-delay="150">
+          <div class="project-image">
+            <img src="./images/EMS-.png" alt="Employee Management System screenshot" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-heading">
+              <h3>Employee Management System</h3>
+<span class="project-subtitle">Capstone Project · Solo Project</span>
+            </div>
+
+            <ul class="tech-badges tech-badges--sm">
+              <li class="badge"><i class="fa-brands fa-react"></i> React</li>
+              <li class="badge"><i class="fa-brands fa-python"></i> Django</li>
+              <li class="badge">REST APIs</li>
+            </ul>
+
+            <p class="project-desc">
+              A secure, role-based web application for managing company departments, employees,
+              and internal tasks, with distinct Admin and Employee views.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Built an Admin view with full control over departments and staff</li>
+              <li>Built an Employee view to manage assigned tasks</li>
+              <li>Implemented role-based authentication and authorization</li>
+            </ul>
+
+            <div class="project-actions">
+              <a href="https://github.com/Deem02/capstone-project-frontend" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Soorat -->
+<article class="project-card project-card--team" data-animate="fade-up" data-delay="200">
+  <span class="ribbon ribbon--team"><i class="fa-solid fa-users"></i> Team Project</span>
+  <div class="project-image">
+    <img src="./images/soorat.png" alt="Soorat calorie tracking app screenshot" loading="lazy">
+  </div>
+          <div class="project-body">
+            <div class="project-heading">
+              <h3>Soorat</h3>
+              <span class="project-subtitle">AI Calorie Tracking App</span>
+            </div>
+
+            <ul class="tech-badges tech-badges--sm">
+              <li class="badge"><i class="fa-brands fa-react"></i> React</li>
+              <li class="badge">AI Vision</li>
+              <li class="badge">Multi-language</li>
+            </ul>
+
+            <p class="project-desc">
+              AI-powered calorie tracking app that estimates nutrients from images, provides
+              personalized tips, and tracks daily intake with a progress dashboard.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Integrated AI-based image-to-nutrition estimation</li>
+              <li>Built a daily progress dashboard</li>
+              <li>Supported Arabic, English and French</li>
+            </ul>
+
+            <div class="project-actions">
+              <a href="https://github.com/alanoudtw/Soorat_Frontend" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5: Tajawwl AlQassim -->
+<article class="project-card project-card--team" data-animate="fade-up" data-delay="250">
+  <span class="ribbon ribbon--team"><i class="fa-solid fa-users"></i> Team Project</span>
+  <div class="project-image">
+    <img src="./images/tajawwlApp-removebg-preview.png" alt="Tajawwl AlQassim app screenshot" loading="lazy">
+  </div>
+          <div class="project-body">
+            <div class="project-heading">
+              <h3>Tajawwl AlQassim</h3>
+              <span class="project-subtitle">Android Events App</span>
+            </div>
+
+            <ul class="tech-badges tech-badges--sm">
+              <li class="badge">Android</li>
+              <li class="badge">Firebase</li>
+            </ul>
+
+            <p class="project-desc">
+              An Android app for discovering and managing events in the Qassim region, with
+              category-based navigation and secure authentication.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Built category-based event navigation</li>
+              <li>Implemented secure authentication</li>
+              <li>Real-time event management using Firebase</li>
+            </ul>
+
+            <div class="project-actions">
+              <a href="https://github.com/alanoudtw/Tajwal-Alqassim-App" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6: ACME Bank / Business Intelligence -->
+        <article class="project-card" data-animate="fade-up" data-delay="300">
+          <div class="project-image">
+            <img src="./images/ACME-.png" alt="ACME Bank CLI project screenshot" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-heading">
+              <h3>ACME Bank</h3>
+<span class="project-subtitle">CLI Banking System · Solo Project</span>
+            </div>
+
+            <ul class="tech-badges tech-badges--sm">
+              <li class="badge"><i class="fa-brands fa-python"></i> Python</li>
+              <li class="badge">Unit Testing</li>
+            </ul>
+
+            <p class="project-desc">
+              A command-line program built with Python that lets users create accounts, deposit
+              and withdraw money, and transfer between accounts.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Custom exception handling for reliability</li>
+              <li>Comprehensive unit test coverage</li>
+            </ul>
+
+            <div class="project-actions">
+              <a href="https://github.com/Deem02/python-bank-project" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </section>
 
-    <section id="projects" class="page-section">
-        <h5>Projects</h5>
-        <div class="projects-box">
-            <div class="project-card">
-                <img src="./images/soorat.png" alt="link to github">
-                <h3>Soorat Application</h3>
-                <p>AI-powered calorie tracking app that estimates nutrients from an images, provides personalized
-                    tips, tracks daily intake with a progress dashboard, and support multi-language.
-                    <!--  meal sharing via WhatsApp sharing, -offers multi-language support (Arabic, English, French). -->
-                </p>
+    <!-- SKILLS -->
+    <section id="skills" class="page-section skills-section">
+      <div class="section-heading" data-animate="fade-up">
+        <span class="section-tag"><i class="fa-solid fa-layer-group"></i> Skills</span>
+        <h2 class="section-title">Technologies I Work With</h2>
+      </div>
 
-                <div class="btn"> <a href="https://github.com/alanoudtw/Soorat_Frontend" target="_blank" rel="noopener noreferrer">
-                        <img src="./images/github.png" alt="Link to github" /></a></div>
-                <!-- https://www.flaticon.com/search?word=github -->
-            </div>
-
-            <div class="project-card">
-                <img src="./images/tajawwlApp-removebg-preview.png" alt="">
-                <h3>Tajawwl AlQassim Application</h3>
-                <p>Android app for discovering and managing events in the Qassim region,
-                    with category-based navigation, secure authentication, and real-time event management using
-                    Firebase.
-                </p>
-                <div class="btn"> <a href="https://github.com/alanoudtw/Tajwal-Alqassim-App" target="_blank"
-                        rel="noopener noreferrer">
-                        <img src="./images/github.png" alt="Link to github" /></a></div>
-            </div>
-            
-            <div class="project-card">
-                <img src="./images/EMS-.png" alt="">
-                <h3>Employee Management System</h3>
-                <p>Developed a secure, role-based web application using Django and React for managing company departments, employees, and
-                    internal tasks.
-                    Implemented an Admin view with full control and an Employee view to easily access and manage their
-                    assigned tasks.
-                </p>
-                <div class="btn"> <a href="https://github.com/Deem02/capstone-project-frontend.git" target="_blank"
-                        rel="noopener noreferrer">
-                        <img src="./images/github.png" alt="Link to github" /></a></div>
-            </div>
-            <div class="project-card">
-                <img src="./images/ACME-.png" alt="">
-                <h3>ACME Bank</h3>
-                <p>A Command-line (CLI) program built with Python that lets users create accounts, deposit and withdraw money, and transfer between accounts.
-                     Focused on Custom exception handling and unit testing to ensure reliability.
-                </p>
-                <div class="btn"> <a href="https://github.com/Deem02/python-bank-project" target="_blank"
-                        rel="noopener noreferrer">
-                        <img src="./images/github.png" alt="Link to github" /></a></div>
-            </div>
-
+      <div class="skills-grid" data-animate="fade-up" data-delay="100">
+        <div class="skill-group">
+          <h3>Frontend</h3>
+          <ul class="tech-badges">
+            <li class="badge"><i class="fa-brands fa-react"></i> React</li>
+            <li class="badge">TypeScript</li>
+            <li class="badge">Vite</li>
+            <li class="badge">Tailwind CSS</li>
+            <li class="badge"><i class="fa-brands fa-html5"></i> HTML5</li>
+            <li class="badge"><i class="fa-brands fa-css3-alt"></i> CSS3</li>
+          </ul>
         </div>
-
+        <div class="skill-group">
+          <h3>Backend</h3>
+          <ul class="tech-badges">
+            <li class="badge"><i class="fa-brands fa-python"></i> Python</li>
+            <li class="badge"><i class="fa-brands fa-python"></i> Django</li>
+            <li class="badge">FastAPI</li>
+            <li class="badge">REST APIs</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Database &amp; Tools</h3>
+          <ul class="tech-badges">
+            <li class="badge"><i class="fa-solid fa-database"></i> PostgreSQL</li>
+            <li class="badge">Supabase</li>
+            <li class="badge"><i class="fa-brands fa-git-alt"></i> Git</li>
+            <li class="badge"><i class="fa-brands fa-github"></i> GitHub</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" class="page-section">
-        <h5>Contact</h5>
-        <div class="form-container">
-            <!-- https://www.youtube.com/watch?v=ZtAEXhpTJXk -->
-            <form action="https://formspree.io/f/mgvlqdyp" method="post">
-                <div class="form-group">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" id="name" name="user_name" class="form-input" required />
-                </div>
-                <div class="form-group">
-                    <label for="mail" class="form-label">Email</label>
-                    <input type="email" id="mail" name="user_email" class="form-input" required />
-                </div>
-                <div class="form-group">
-                    <label for="msg" class="form-label">Message</label>
-                    <textarea id="msg" name="user_message" class='form-textarea' required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">
-                    Send Message
-                </button>
-            </form>
-        </div>
+    <!-- CONTACT -->
+    <section id="contact" class="page-section contact-section">
+      <div class="section-heading" data-animate="fade-up">
+        <span class="section-tag"><i class="fa-regular fa-envelope"></i> Contact</span>
+        <h2 class="section-title">Let's Work Together</h2>
+      </div>
 
+      <div class="form-container" data-animate="fade-up" data-delay="100">
+        <form action="https://formspree.io/f/mgvlqdyp" method="post" novalidate>
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" name="user_name" class="form-input" autocomplete="name" required />
+          </div>
+          <div class="form-group">
+            <label for="mail" class="form-label">Email</label>
+            <input type="email" id="mail" name="user_email" class="form-input" autocomplete="email" required />
+          </div>
+          <div class="form-group">
+            <label for="msg" class="form-label">Message</label>
+            <textarea id="msg" name="user_message" class="form-textarea" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary submit-btn">
+            Send Message <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
     </section>
-    <!-- 
-    <div>    
-<footer></footer></div> -->
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Deem Alqasir. Built with care.</p>
+  </footer>
+
+  <script src="./scripts/app.js" defer></script>
 </body>
-
 </html>

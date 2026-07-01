@@ -1,61 +1,214 @@
+/* =========================================================
+   Deem Alqasir — Portfolio
+   Main JavaScript
+========================================================= */
+(function () {
+  'use strict';
 
-function init() {
+  document.addEventListener('DOMContentLoaded', init);
 
-    // https://youtu.be/Og-YEeCTE7A?si=Oeatz5G8KOPQ_fwD
-    const navbarToogle = document.querySelector('.navbar-toggle')
-    const navbarMenu = document.querySelector('.navbar-menu')
+  function init() {
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    const navLinks = document.querySelectorAll('.navbar-menu a')
-const sections = document.querySelectorAll('section')
-    navbarToogle.addEventListener('click', () => {
-        navbarToogle.classList.toggle('active') // It adds the class active to the button if it's not there,
-        // and removes it if it is. it triggers  CSS to animate the button into an "X".
-        navbarMenu.classList.toggle('active') //triggers CSS to show or hide the menu on small screens.
-    })
+    initNavToggle();
+    initActiveNavLink();
+    initNavbarHideOnScroll();
+    initScrollProgress();
+    initScrollReveal();
+    initThemeToggle();
+    initContactForm();
+  }
 
-    // colse mobile menue 
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navbarMenu.classList.contains('active')) {
-                navbarToogle.classList.remove('active')
-                navbarMenu.classList.remove('active')
-            }
-        })
-    })
-    // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+  /* ---------------------------------------------------------
+     Mobile Navigation Toggle
+  --------------------------------------------------------- */
+  function initNavToggle() {
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    const navbarMenu = document.querySelector('.navbar-menu');
+    if (!navbarToggle || !navbarMenu) return;
 
-    // Step 1: Define the options for the observer
-       const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.5 // trigger when 50% of the section is visible
-            }
- // Step 2: Create the observer, passing it the NAME of the callback function
-            const observer = new IntersectionObserver(handleIntersection, observerOptions)
-              // Step 3: Define the callback function that the observer will execute
-   function handleIntersection(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Remove active class from all links
-                        navLinks.forEach(link => link.classList.remove('active'))
+    const navLinks = navbarMenu.querySelectorAll('a');
 
-                        // Add active class to the correct link
-                        const id = entry.target.getAttribute('id')
-                        const matchingLink = document.querySelector(`.navbar-menu a[href="#${id}"]`)
-                        if (matchingLink) {
-                            matchingLink.classList.add('active')
-                        }
-                    }
-                })
-            }
+    navbarToggle.addEventListener('click', () => {
+      const isActive = navbarMenu.classList.toggle('active');
+      navbarToggle.classList.toggle('active');
+      navbarToggle.setAttribute('aria-expanded', String(isActive));
+    });
 
-            // Step 4: Tell the observer to watch each of the sections
-            sections.forEach(section => {
-                observer.observe(section)
-            })
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        navbarMenu.classList.remove('active');
+        navbarToggle.classList.remove('active');
+        navbarToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
+  /* ---------------------------------------------------------
+     Active Navigation Link via IntersectionObserver
+  --------------------------------------------------------- */
+  function initActiveNavLink() {
+    const navLinks = document.querySelectorAll('.navbar-menu a');
+    const sections = document.querySelectorAll('section[id]');
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      root: null,
+      rootMargin: '-40% 0px -55% 0px',
+      threshold: 0,
+    });
+
+    function handleIntersection(entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => link.classList.remove('active'));
+          const id = entry.target.getAttribute('id');
+          const matchingLink = document.querySelector(`.navbar-menu a[href="#${id}"]`);
+          if (matchingLink) matchingLink.classList.add('active');
+        }
+      });
+    }
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  /* ---------------------------------------------------------
+     Navbar Hide/Reveal on Scroll
+  --------------------------------------------------------- */
+  function initNavbarHideOnScroll() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const scrollingDown = currentScrollY > lastScrollY;
+
+          if (currentScrollY > 120 && scrollingDown) {
+            navbar.classList.add('navbar--hidden');
+          } else {
+            navbar.classList.remove('navbar--hidden');
+          }
+
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+
+  /* ---------------------------------------------------------
+     Scroll Progress Bar
+  --------------------------------------------------------- */
+  function initScrollProgress() {
+    const bar = document.getElementById('scrollProgress');
+    if (!bar) return;
+
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = `${progress}%`;
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  /* ---------------------------------------------------------
+     Scroll Reveal (fade-up + staggered)
+  --------------------------------------------------------- */
+  function initScrollReveal() {
+    const animatedEls = document.querySelectorAll('[data-animate]');
+    if (!animatedEls.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.getAttribute('data-delay') || 0;
+            setTimeout(() => {
+              entry.target.classList.add('is-visible');
+            }, Number(delay));
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    animatedEls.forEach((el) => observer.observe(el));
+  }
+
+  /* ---------------------------------------------------------
+     Theme Toggle (Dark / Light)
+  --------------------------------------------------------- */
+  function initThemeToggle() {
+    const toggleBtn = document.getElementById('themeToggle');
+    if (!toggleBtn) return;
+
+    const icon = toggleBtn.querySelector('i');
+    const storedTheme = localStorage.getItem('portfolio-theme');
+
+    if (storedTheme === 'light') {
+      document.body.classList.add('light-theme');
+      updateIcon();
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+      updateIcon();
+    });
+
+function updateIcon() {
+  const isLight = document.body.classList.contains('light-theme');
+  icon.className = isLight ? 'fa-solid fa-sun' : 'fa-regular fa-moon';
 }
+  }
 
-//  This is the first thing that runs. It tells the browser, Wait 
-// until the entire HTML page is loaded, then run the init function
-document.addEventListener('DOMContentLoaded', init)
+  /* ---------------------------------------------------------
+     Contact Form (Formspree AJAX submit + inline status)
+  --------------------------------------------------------- */
+  function initContactForm() {
+    const form = document.querySelector('.form-container form');
+    const status = document.getElementById('formStatus');
+    if (!form || !status) return;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const submitBtn = form.querySelector('.submit-btn');
+      const originalText = submitBtn.innerHTML;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending...';
+      status.textContent = '';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+
+        if (response.ok) {
+          status.textContent = 'Message sent successfully. Thank you!';
+          form.reset();
+        } else {
+          status.textContent = 'Something went wrong. Please try again.';
+        }
+      } catch (error) {
+        status.textContent = 'Network error. Please try again later.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+  }
+})();
